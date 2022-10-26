@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+    </style>
+    <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<textarea id="target" rows="4" cols="50"></textarea>
+    <script type="text/javascript">
+        $("#target").keypress(function (e) {
+//1
+        var value = $("#target").val() + String.fromCharCode(e.which);
+        var splits = value.split(",");
+
+        if (splits.length > 1) {
+            value = splits[splits.length-1];
+        }
+
+//2
+        var finalValue = "";
+
+        for (var i = 0; i < value.length; i++) {
+            if (i % 2 == 0 && i != 0) {
+                finalValue = finalValue + ',';
+            }
+            finalValue = finalValue + value.charAt(i);
+        }
+    //3
+        if (splits.length > 1) {
+            splits.splice(splits.length-1);
+            var concat = splits.concat(finalValue);
+            finalValue = concat.join()
+        }
+        $("#target").val(finalValue.substring(0, finalValue.length - 1));
+    });
+    </script>
+</body>
+</html>
